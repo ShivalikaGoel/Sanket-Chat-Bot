@@ -128,7 +128,7 @@ class AttachmentsBot extends ActivityHandler {
 //         for(var i=0;i<x;i++)
 //         {
 //         if (firstChar === '1') {
-            reply.text =firstchar;
+            //reply.text =firstchar;
             reply.attachments = [this.getInlineAttachment(firstChar)];
      //   }
 //         } else if (firstChar === '2') {
