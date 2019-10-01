@@ -125,12 +125,11 @@ class AttachmentsBot extends ActivityHandler {
         // possible options.
         const firstChar = turnContext.activity.text;
         
-        for(var i=0;i<4;i++)
-         {
+       
 //         if (firstChar === '1') {
             //reply.text =firstchar;
             reply.attachments = [this.getInlineAttachment(firstChar[0])];
-       }
+       
 //         } else if (firstChar === '2') {
 //             reply.attachments = [this.getInternetAttachment()];
 //             reply.text = 'This is an internet attachment.';
@@ -178,14 +177,8 @@ class AttachmentsBot extends ActivityHandler {
        
 //              const imageData = fs.readFileSync(path.join(__dirname, '/resources/a.png'));
 //         const base64Image = Buffer.from(imageData).toString('base64');
-          if(str==='a')
-          {
+         
          imageData = fs.readFileSync(path.join(__dirname, '/resources/finalex.png'));
-          }
-            else
-            {
-                 imageData = fs.readFileSync(path.join(__dirname, '/resources/a.png'));
-            }
             
         const base64Image = Buffer.from(imageData).toString('base64');
            
