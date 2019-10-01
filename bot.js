@@ -179,15 +179,17 @@ class AttachmentsBot extends ActivityHandler {
 //         const base64Image = Buffer.from(imageData).toString('base64');
            if(str ==='a')
            {
-   
-        const imageData = fs.readFileSync(path.join(__dirname, '/resources/finalex.png'));
-        const base64Image = Buffer.from(imageData).toString('base64');
+               reply.text= 'hey!It';
            }
             else
             {
-                  const imageData = fs.readFileSync(path.join(__dirname, '/resources/a.png'));
-        const base64Image = Buffer.from(imageData).toString('base64');
+                relpy.text='Whatsoever';
             }
+    
+        const imageData = fs.readFileSync(path.join(__dirname, '/resources/finalex.png'));
+        const base64Image = Buffer.from(imageData).toString('base64');
+           
+        
     
         return {
             name: 'a.png',
