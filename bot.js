@@ -123,20 +123,20 @@ class AttachmentsBot extends ActivityHandler {
         // the available attachments.
         // If the choice does not match with a valid choice, inform the user of
         // possible options.
-        const firstChar = turnContext.activity.text[0];
-        if (firstChar === '1') {
-            reply.text = 'This is an inline attachment.';
-            reply.attachments = [this.getInlineAttachment()];
-        } else if (firstChar === '2') {
-            reply.attachments = [this.getInternetAttachment()];
-            reply.text = 'This is an internet attachment.';
-        } else if (firstChar === '3') {
-            reply.attachments = [await this.getUploadedAttachment(turnContext)];
-            reply.text = 'This is an uploaded attachment.';
-        } else {
-            // The user did not enter input that this bot was built to handle.
-            reply.text = 'Your input was not recognized, please try again.';
-        }
+        const firstChar = turnContext.activity.text;
+//         if (firstChar === '1') {
+//             reply.text = 'This is an inline attachment.';
+            reply.attachments = [this.getInlineAttachment(firstChar)];
+//         } else if (firstChar === '2') {
+//             reply.attachments = [this.getInternetAttachment()];
+//             reply.text = 'This is an internet attachment.';
+//         } else if (firstChar === '3') {
+//             reply.attachments = [await this.getUploadedAttachment(turnContext)];
+//             reply.text = 'This is an uploaded attachment.';
+//         } else {
+//             // The user did not enter input that this bot was built to handle.
+//             reply.text = 'Your input was not recognized, please try again.';
+//         }
         await turnContext.sendActivity(reply);
     }
 
@@ -146,7 +146,7 @@ class AttachmentsBot extends ActivityHandler {
      */
     async displayOptions(turnContext) {
         const reply = { type: ActivityTypes.Message };
-
+        
         // Note that some channels require different values to be used in order to get buttons to display text.
         // In this code the emulator is accounted for with the 'title' parameter, but in other channels you may
         // need to provide a value for other parameters like 'text' or 'displayText'.
@@ -167,7 +167,9 @@ class AttachmentsBot extends ActivityHandler {
     /**
      * Returns an inline attachment.
      */
-    getInlineAttachment() {
+    getInlineAttachment(str) 
+        {
+            
         const imageData = fs.readFileSync(path.join(__dirname, '/resources/image.png'));
         const base64Image = Buffer.from(imageData).toString('base64');
 
