@@ -15,7 +15,7 @@ class AttachmentsBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
                     // If the Activity is a ConversationUpdate, send a greeting message to the user.
-                   await context.sendActivity('Intro');
+                   await context.sendActivity('Hey! My name is SIMADI and I am here to help you out in your conversation. Just type the message you want to convey and I will convert it into sign language for you.');
                   // await context.sendActivity('Alternatively, I can send you an attachment.');
 
                     // Send a HeroCard with potential options for the user to select.
