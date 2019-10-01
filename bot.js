@@ -129,7 +129,7 @@ class AttachmentsBot extends ActivityHandler {
          {
 //         if (firstChar === '1') {
             //reply.text =firstchar;
-            reply.attachments = [this.getInlineAttachment(firstChar)];
+            reply.attachments = [this.getInlineAttachment(firstChar[0])];
        }
 //         } else if (firstChar === '2') {
 //             reply.attachments = [this.getInternetAttachment()];
@@ -174,10 +174,16 @@ class AttachmentsBot extends ActivityHandler {
     getInlineAttachment(str) 
         {
           
-            
+        if(str.equals('a'))
+           {
+             const imageData = fs.readFileSync(path.join(__dirname, '/resources/a.png'));
+        const base64Image = Buffer.from(imageData).toString('base64');
+           }
+    else
+    {
         const imageData = fs.readFileSync(path.join(__dirname, '/resources/finalex.png'));
         const base64Image = Buffer.from(imageData).toString('base64');
-    
+    }
         return {
             name: 'a.png',
             contentType: 'image/png',
