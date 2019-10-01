@@ -171,9 +171,9 @@ class AttachmentsBot extends ActivityHandler {
         {
           
             
-        const imageData = fs.readFileSync(path.join(__dirname, '/resources/image.png'));
+        const imageData = fs.readFileSync(path.join(__dirname, '/resources/str.png'));
         const base64Image = Buffer.from(imageData).toString('base64');
-
+    
         return {
             name: 'a.png',
             contentType: 'image/png',
