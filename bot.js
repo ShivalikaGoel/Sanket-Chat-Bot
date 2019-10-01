@@ -124,9 +124,13 @@ class AttachmentsBot extends ActivityHandler {
         // If the choice does not match with a valid choice, inform the user of
         // possible options.
         const firstChar = turnContext.activity.text;
+        var x=firstChar.length;
+        for(var i=0;i<x;i++)
+        {
 //         if (firstChar === '1') {
 //             reply.text = 'This is an inline attachment.';
-            reply.attachments = [this.getInlineAttachment(firstChar)];
+            reply.attachments = [this.getInlineAttachment(firstChar[i])];
+        }
 //         } else if (firstChar === '2') {
 //             reply.attachments = [this.getInternetAttachment()];
 //             reply.text = 'This is an internet attachment.';
