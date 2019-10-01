@@ -8,6 +8,7 @@ const restify = require('restify');
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
+// const { AttachmentsBot } = require('./bots/attachmentsBot');
 
 // This bot's main dialog.
 const { EchoBot } = require('./bot');
@@ -43,6 +44,8 @@ adapter.onTurnError = async (context, error) => {
 
 // Create the main dialog.
 const bot = new EchoBot();
+// const bot = new AttachmentsBot();
+
 
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
