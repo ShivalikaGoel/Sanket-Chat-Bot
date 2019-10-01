@@ -125,12 +125,12 @@ class AttachmentsBot extends ActivityHandler {
         // possible options.
         const firstChar = turnContext.activity.text;
         
-//         for(var i=0;i<x;i++)
-//         {
+        for(var i=0;i<4;i++)
+         {
 //         if (firstChar === '1') {
             //reply.text =firstchar;
             reply.attachments = [this.getInlineAttachment(firstChar)];
-     //   }
+       }
 //         } else if (firstChar === '2') {
 //             reply.attachments = [this.getInternetAttachment()];
 //             reply.text = 'This is an internet attachment.';
