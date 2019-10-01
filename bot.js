@@ -47,7 +47,7 @@ class EchoBot extends ActivityHandler {
         });
     }
     getInlineAttachment() {
-    const imageData = fs.readFileSync(path.join(__dirname, '../resources/image.png'));
+    const imageData = fs.readFileSync(path.join(__dirname, '/resources/image.png'));
     const base64Image = Buffer.from(imageData).toString('base64');
 
     return {
