@@ -15,11 +15,11 @@ class AttachmentsBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
                     // If the Activity is a ConversationUpdate, send a greeting message to the user.
-                    await context.sendActivity('Welcome to the Attachment Handling sample! Send me an attachment and I will save it.');
-                    await context.sendActivity('Alternatively, I can send you an attachment.');
+                   await context.sendActivity('Intro');
+                  // await context.sendActivity('Alternatively, I can send you an attachment.');
 
                     // Send a HeroCard with potential options for the user to select.
-                    await this.displayOptions(context);
+                   // await this.displayOptions(context);
 
                     // By calling next() you ensure that the next BotHandler is run.
                     await next();
