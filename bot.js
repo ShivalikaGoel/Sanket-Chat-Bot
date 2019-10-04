@@ -23,9 +23,9 @@ class AttachmentsBot extends ActivityHandler {
         });
 
         this.onMessage(async (context, next) => {
-            // Determine how the bot should process the message by checking for attachments.
+            
             if (context.activity.attachments && context.activity.attachments.length > 0) {
-                // The user sent an attachment and the bot should handle the incoming attachment.
+                
                 await this.handleIncomingAttachment(context);
             } else {
               
@@ -43,13 +43,10 @@ class AttachmentsBot extends ActivityHandler {
         const promises = turnContext.activity.attachments.map(this.downloadAttachmentAndWrite);
         const successfulSaves = await Promise.all(promises);
 
-        // Replies back to the user with information about where the attachment is stored on the bot's server,
-        // and what the name of the saved file is.
+        
         async function replyForReceivedAttachments(localAttachmentData) {
             if (localAttachmentData) {
-                // Because the TurnContext was bound to this function, the bot can call
-                // `TurnContext.sendActivity` via `this.sendActivity`;
-                await this.sendActivity(`Attachment "${ localAttachmentData.fileName }" ` +
+               " ` +
                     `has been received and saved to "${ localAttachmentData.localPath }".`);
             } else {
                 await this.sendActivity('Attachment was not successfully saved to disk.');
@@ -70,9 +67,9 @@ class AttachmentsBot extends ActivityHandler {
         const localFileName = path.join(__dirname, attachment.name);
 
         try {
-            // arraybuffer is necessary for images
+            
             const response = await axios.get(url, { responseType: 'arraybuffer' });
-            // If user uploads JSON file, this prevents it from being written as "{"type":"Buffer","data":[123,13,10,32,32,34,108..."
+         
             if (response.headers['content-type'] === 'application/json') {
                 response.data = JSON.parse(response.data, (key, value) => {
                     return value && value.type === 'Buffer' ? Buffer.from(value.data) : value;
@@ -128,19 +125,13 @@ class AttachmentsBot extends ActivityHandler {
         await turnContext.sendActivity(reply);
     }
 
-    /**
-     * Returns an inline attachment.
-     */
+   
     getInlineAttachment(str) 
         {
             const reply = { type: ActivityTypes.Message };
             
        
-//              const imageData = fs.readFileSync(path.join(__dirname, '/resources/a.png'));
-//         const base64Image = Buffer.from(imageData).toString('base64');
-         
-//         const imageData = fs.readFileSync(path.join(__dirname, '/resources/finalex.png'));
-//             var x='a';
+
             var x=str;
                     const imageData = fs.readFileSync(path.join(__dirname, '/resources/'+x+'.png'));
             
@@ -157,11 +148,9 @@ class AttachmentsBot extends ActivityHandler {
     
     }
 
-    /**
-     * Returns an attachment to be sent to the user from a HTTPS URL.
-     */
+   
     getInternetAttachment() {
-        // NOTE: The contentUrl must be HTTPS.
+        
         return {
             name: 'architecture-resize.png',
             contentType: 'image/png',
@@ -169,10 +158,6 @@ class AttachmentsBot extends ActivityHandler {
         };
     }
 
-    /**
-     * Returns an attachment that has been uploaded to the channel's blob storage.
-     * @param {Object} turnContext
-     */
     async getUploadedAttachment(turnContext) {
         const imageData = fs.readFileSync(path.join(__dirname, '../resources/architecture-resize.png'));
         const connector = turnContext.adapter.createConnectorClient(turnContext.activity.serviceUrl);
@@ -183,7 +168,7 @@ class AttachmentsBot extends ActivityHandler {
             type: 'image/png'
         });
 
-        // Retrieve baseUri from ConnectorClient for... something.
+       
         const baseUri = connector.baseUri;
         const attachmentUri = baseUri + (baseUri.endsWith('/') ? '' : '/') + `v3/attachments/${ encodeURI(response.id) }/views/original`;
         return {
