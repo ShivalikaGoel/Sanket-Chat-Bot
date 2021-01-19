@@ -1,4 +1,7 @@
-# Echo Bot template
+# About the project
+The bot which generates hands gestures for the word given as input and helps in communication with those who have hearing disabilities. 
+
+## Echo Bot template
 
 This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
 
